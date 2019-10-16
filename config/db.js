@@ -1,13 +1,16 @@
-const moongoose = requires('moongose');
-const config = require(config);
-const db = config.get('mongoURI')
+const mongoose = require('mongoose');
+const config = require('config');
+const db = config.get('mongoURI');
 
 const connectDB = async () => {
     try {
-       await moongoose.connect(db);
-       console.log('MongoDB Connected')
+       await mongoose.connect(db), {
+           userNewUrlParser: true
+       };
+
+       console.log('MongoDB Connected...')
     }catch(err){
-        console.err(err.message);
+        console.error(err.message);
         //Exit process with failure
         process.exit(1);
     }
