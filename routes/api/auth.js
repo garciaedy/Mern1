@@ -1,4 +1,4 @@
-const express = require('espress');
+const express = require('express');
 const router = express.Router();
 
 // @route GET api/auth
@@ -7,4 +7,4 @@ const router = express.Router();
 router.get('/', (req, res) => res.send('auth router')); 
 
 
-module.exports = rputer;
+module.exports = router;
