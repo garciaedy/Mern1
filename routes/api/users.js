@@ -1,11 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const {check, validationResult} = require('express-validator/check')
+const {check, validationResult} = require('express-validator/check');
+
+// Model
+const User = require('../../models/User')
 
 // @route POST api/users
 //  @dec  register user
 // @access public
-router.post('/',[
+router.post(
+    '/',
+    [
     check('name', 'Name is required')
     .not()
     .isEmpty(),
@@ -17,9 +22,18 @@ router.post('/',[
 ], 
 (req, res) => {
 const errors = validationResult(req);
-if(!errors.isEmpty()){
-    return res.status(400).json({errors: errors.array() });
+if(!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
 }
+
+
+
+// See if the user exist
+// GET Users gravatar 
+// Encrypt password usind bcrypt
+// Return jsonwebtoken
+
+
 
 res.send('User router');
 
