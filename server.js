@@ -6,6 +6,10 @@ const app = express();
 // connect Database;
 connectDB();
 
+// INIT middleware
+
+app.use(express.json({extended: false}));
+
 app.get('/',(req, res) => res.send('API Running'));
 
 // Define Routes
