@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
+const bcrypt = require('bcryptjs')
 const {check, validationResult} = require('express-validator/check');
 
 // Model
@@ -51,6 +52,9 @@ user  = new User({
   password
 });
 // Encrypt password usind bcrypt
+const salt = await bcrypt.genSalt(10);
+
+user.password = await bcrypt.has(password, salt);
 // Return jsonwebtoken
 res.send('User router');
 }catch(err){
