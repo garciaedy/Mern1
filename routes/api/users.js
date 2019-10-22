@@ -55,6 +55,9 @@ user  = new User({
 const salt = await bcrypt.genSalt(10);
 
 user.password = await bcrypt.has(password, salt);
+
+
+await  user.save();
 // Return jsonwebtoken
 res.send('User router');
 }catch(err){
